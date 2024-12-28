@@ -17,7 +17,7 @@ export default function Home() {
             </h3>
             <h2 className='text-3xl md:text-5xl mb-2'>Hello I&apos;m</h2>
             <h1 className='text-lightSky text-5xl md:text-7xl tracking-normal'>
-              John Doe
+              Michael Zerihun
             </h1>
           </div>
           <div className='w-full h-[170px] md:h-[140px] relative'>
