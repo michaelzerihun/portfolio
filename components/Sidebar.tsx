@@ -1,58 +1,63 @@
-import { useOutsideClick } from '@/hooks/use-outside-click';
-import { X } from 'lucide-react';
-import React from 'react';
-import Logo from './Logo';
-import { navbarData } from '@/constants';
-import Link from 'next/link';
-import SocialLinks from './SocialLinks';
+import React from "react";
+import { X } from "lucide-react";
+import Link from "next/link";
+import { NavbarData } from "@/constants";
+import { usePathname } from "next/navigation";
+import { useOutsideClick } from "@/hooks/use-outside-click";
+import SocialLinks from "./SocialLinks";
+import Logo from "./Logo";
 
-interface Props {
+interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
-  pathname: string;
 }
 
-const Sidebar: React.FC<Props> = ({ isOpen, onClose, pathname }) => {
+const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
+  const pathname = usePathname();
   const sidebarRef = useOutsideClick<HTMLDivElement>(onClose);
+
   return (
     <div
       ref={sidebarRef}
-      className={`fixed inset-y-0 right-0 z-50 min-w-72 max-w-96 bg-bodyColor border-1 border-l-hoverColor/50 shadow-xl transform ${
-        isOpen ? ' translate-x-0' : 'translate-x-full'
+      className={`fixed inset-y-0 right-0 z-50 min-w-72 max-w-96 bg-bodyColor border-l border-l-hoverColor/20 shadow-xl transform ${
+        isOpen ? "translate-x-0" : "translate-x-full"
       } transition-transform duration-300 ease-in-out`}
     >
-      <div className='flex justify-end p-4'>
+      <div className="flex justify-end p-4">
         <button
           onClick={onClose}
-          className='hover:text-red-600 hoverEffect'
-          aria-label='Close sidebar'
+          className="hover:text-red-600 hoverEffect"
+          aria-label="Close sidebar"
         >
-          <X />
+          <X className="h-6 w-6" />
         </button>
       </div>
-      <nav className='flex flex-col px-5 gap-7 text-sm uppercase tracking-wide font-medium mt-2'>
-        <Logo title='Michael' subtitle='.' />
-        {navbarData?.map((item) => (
+      <nav className="flex flex-col px-5 gap-7 text-sm uppercase tracking-wide font-medium mt-2">
+        <Logo title="John" subtitle="." />
+        {NavbarData.map((item) => (
           <Link
-            key={item?.title}
-            href={item?.href}
-            className={`hover:text-hoverColor hoverEffect ${
-              pathname === item?.href && 'text-hoverColor'
+            key={item.title}
+            href={item.link}
+            className={`hover:text-hoverColor hoverEffect relative group overflow-x-hidden ${
+              item?.link === pathname && "text-hoverColor"
             }`}
             onClick={onClose}
           >
-            {item?.title}
+            {item.title}
           </Link>
         ))}
         <Link
-          href={'/resume.pdf'}
-          target='_blank'
-          rel='noopener noreferrer'
-          className='text-sm bg-lightSky/10 px-4 py-2 rounded-md border border-hoverColor/10 hover:border-hoverColor hover:bg-hoverColor hover:text-black w-40 hoverEffect'
+          href={"/resume.pdf"}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm bg-lightSky/10 px-4 py-2 rounded-md border border-hoverColor/10 hover:border-hoverColor hover:bg-hoverColor hover:text-black hoverEffect"
+          onClick={onClose}
         >
           Hire me
         </Link>
-        <SocialLinks />
+        <div>
+          <SocialLinks />
+        </div>
       </nav>
     </div>
   );

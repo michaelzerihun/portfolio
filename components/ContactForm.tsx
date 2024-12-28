@@ -1,188 +1,195 @@
-'use client';
-import React, { ChangeEvent, FormEvent } from 'react';
-import { Input } from './ui/input';
-import { Textarea } from './ui/textarea';
+"use client";
+import React, { useState } from "react";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
+import { Button } from "./ui/button";
 import {
   Select,
-  SelectValue,
-  SelectTrigger,
-  SelectGroup,
   SelectContent,
-  SelectLabel,
+  SelectGroup,
   SelectItem,
-} from './ui/select';
-import { Button } from './ui/button';
-import { useToast } from '@/hooks/use-toast';
-import SuccessMessage from './SuccessMessage';
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
+import SuccessMsg from "./SuccessMsg";
+import { useToast } from "@/hooks/use-toast";
 
 const ContactForm = () => {
   const { toast } = useToast();
-
-  const [status, setStatus] = React.useState('');
-  const [success, setSuccess] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
-  const [formData, setFormData] = React.useState({
-    Name: '',
-    Email: '',
-    Phone: '',
-    Address: '',
-    Message: '',
-    Service: '',
+  const [status, setStatus] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [isLoading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    Name: "",
+    Email: "",
+    Phone: "",
+    Address: "",
+    Message: "",
+    Service: "",
   });
-
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const handleSelectChange = (value: string) => {
-    setFormData((prevData) => ({ ...prevData, Service: value }));
+    setFormData((prevData) => ({
+      ...prevData,
+      Service: value,
+    }));
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     e.preventDefault();
+
+    if (!formData.Name.trim() || !formData.Email.trim()) {
+      toast({
+        title: "Error: Something is wrong",
+        description: "Please input your name and email to continue",
+        variant: "destructive",
+      });
+      return;
+    }
+    const form = new FormData();
+    const currentDateTime = new Date().toLocaleString();
+    form.append("Name", formData.Name);
+    form.append("Email", formData.Email);
+    form.append("Phone", formData.Phone);
+    form.append("Address", formData.Address);
+    form.append("Message", formData.Message);
+    form.append("Service", formData.Service);
+    form.append("DateTime", currentDateTime);
+
     try {
       setLoading(true);
-      if (!formData.Name.trim() || !formData.Email.trim()) {
-        toast({
-          title: 'Error: Something is wrong',
-          description: 'Please input your name and email',
-          variant: 'destructive',
-        });
-        return;
-      }
-      const form = new FormData();
-      const currentDateTime = new Date().toLocaleString();
-      form.append('Name', formData.Name);
-      form.append('Email', formData.Email);
-      form.append('Phone', formData.Phone);
-      form.append('Address', formData.Address);
-      form.append('Message', formData.Message);
-      form.append('Service', formData.Service);
-      form.append('DateTime', currentDateTime);
-
-      const response = await fetch('https://getform.io/f/bjjjvemb', {
-        method: 'POST',
+      toast({
+        title: "Message sending limit is finished",
+        description:
+          "You have finished 50/50 message sent limit from getform. Please enable pro mode to continue",
+      });
+      const response = await fetch("", {
+        method: "POST",
         body: form,
       });
+
       if (response.ok) {
         setSuccess(true);
-        setStatus('Your message has been sent successfully!');
+        setStatus("Success! Your message has been sent.");
         setFormData({
-          Name: '',
-          Email: '',
-          Phone: '',
-          Address: '',
-          Message: '',
-          Service: '',
+          Name: "",
+          Email: "",
+          Phone: "",
+          Address: "",
+          Message: "",
+          Service: "",
         });
       } else {
-        setStatus('Error! Please try again later.');
+        setStatus("Error! Unable to send your message.");
       }
     } catch (error) {
-      console.error('Data submission error:', error);
-      setStatus('Error! Please try again later.');
+      console.error("Error!", error);
+      setStatus("Error! Something went wrong.");
     } finally {
       setLoading(false);
     }
   };
-
   return (
-    <div className='space-y-4'>
-      <h3 className='text-2xl md:text-4xl text-lightSky'>
-        Let&apos;s get in touch
+    <form className="space-y-4">
+      <h3 className="text-2xl md:text-4xl text-lightSky">
+        Let&apos;s work together
       </h3>
-      <p>
-        Feel free to reach out to me if you have any questions or if you&apos;d
-        Like to collaborate on a project. I&apos;m always open to new
-        opportunities and ideas. Let&apos;s connect and create something amazing
-        together!
+      <p className="text-white/60 text-sm md:text-base">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil velit
+        vel saepe fugiat ex aperiam, totam quae et tenetur deleniti.
       </p>
       <>
-        {!success ? (
-          <SuccessMessage status={status} />
+        {success ? (
+          <SuccessMsg status={status} />
         ) : (
-          <form
-            onSubmit={handleSubmit}
-            // action='https://getform.io/f/bjjjvemb'
-            // method='POST'
-            className='flex flex-col gap-4'
-          >
-            <div className='flex flex-col md:flex-row gap-4 items-center'>
-              <Input
-                placeholder='Your name'
-                name='Name'
-                id='name'
-                required
-                type='text'
-                value={formData.Name}
+          <>
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col md:flex-row gap-4 items-center">
+                <Input
+                  type="text"
+                  id="Name"
+                  name="Name"
+                  required
+                  placeholder="Your name"
+                  value={formData.Name}
+                  onChange={handleChange}
+                />
+                <Input
+                  type="email"
+                  id="Email"
+                  name="Email"
+                  required
+                  placeholder="Email address"
+                  value={formData.Email}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="flex flex-col md:flex-row gap-4 items-center">
+                <Input
+                  type="text"
+                  id="Phone"
+                  name="Phone"
+                  placeholder="Phone number"
+                  value={formData.Phone}
+                  onChange={handleChange}
+                />
+                <Input
+                  type="text"
+                  id="Address"
+                  name="Address"
+                  placeholder="Address"
+                  value={formData.Address}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <Textarea
+                name="Message"
+                placeholder="Text here"
+                value={formData.Message}
                 onChange={handleChange}
+                rows={5}
               />
-              <Input
-                placeholder='Email address'
-                name='Email'
-                id='email'
-                required
-                type='email'
-                value={formData.Email}
-                onChange={handleChange}
-              />
+              <Select onValueChange={handleSelectChange}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select a service" />
+                </SelectTrigger>
+                <SelectContent className="bg-bodyColor text-white border-white/20">
+                  <SelectGroup>
+                    <SelectLabel>Select a service</SelectLabel>
+                    <SelectItem value="est">Web Development</SelectItem>
+                    <SelectItem value="cst">UI/UX Design</SelectItem>
+                    <SelectItem value="mst">Logo Design</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
             </div>
-            <div className='flex flex-col md:flex-row gap-4 items-center'>
-              <Input
-                placeholder='Phone number'
-                name='Phone'
-                id='phone'
-                type='text'
-                value={formData.Phone}
-                onChange={handleChange}
-              />
-              <Input
-                placeholder='Address'
-                name='Address'
-                id='address'
-                type='text'
-                value={formData.Address}
-                onChange={handleChange}
-              />
-            </div>
-            <Textarea
-              placeholder='Text here'
-              name='Message'
-              rows={5}
-              cols={5}
-              value={formData.Message}
-              onChange={handleChange}
-            />
-            <Select onValueChange={handleSelectChange}>
-              <SelectTrigger>
-                <SelectValue placeholder='Select service' />
-              </SelectTrigger>
-              <SelectContent className='bg-bodyColor text-white border-white/20'>
-                <SelectGroup>
-                  <SelectLabel>Select a service</SelectLabel>
-                  <SelectItem value='web-development'>
-                    Web Development
-                  </SelectItem>
-                  <SelectItem value='mobile-development'>
-                    Mobile Development
-                  </SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
             <Button
-              disabled={loading}
-              type='submit'
-              className='w-full py-4 bg-lightSky/5 text-white/80 border border-lightSky/20 hover:bg-lightSky/10 hover:border-lightSky hover:text-hoverColor hoverEffect'
+              disabled={isLoading}
+              onClick={handleSubmit}
+              type="submit"
+              className="w-full py-4 bg-lightSky/5 text-white/80 border border-lightSky/20 hover:bg-lightSky/10 hover:border-lightSky hover:text-hoverColor hoverEffect"
             >
-              {loading ? 'Submitting message... ' : 'Send Message'}
+              {isLoading ? "Submitting message..." : "Send Message"}
             </Button>
-          </form>
+          </>
         )}
       </>
-    </div>
+    </form>
   );
 };
+
 export default ContactForm;

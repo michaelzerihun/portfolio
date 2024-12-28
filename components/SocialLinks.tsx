@@ -1,64 +1,49 @@
-import { Facebook, Github, Linkedin, Slack, Youtube } from 'lucide-react';
-import Link from 'next/link';
-import React from 'react';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from './ui/tooltip';
+import { Facebook, Github, Instagram, Linkedin, Youtube } from "lucide-react";
+import Link from "next/link";
+import React from "react";
 
 const socialData = [
   {
-    title: 'Youtube',
-    icon: <Youtube />,
-    href: 'https://www.youtube.com',
+    title: "Youtube",
+    icon: <Youtube width={20} height={20} />,
+    link: "https://www.github.com",
   },
   {
-    title: 'Github',
-    icon: <Github />,
-    href: 'https://www.youtube.com',
+    title: "Github",
+    icon: <Github width={20} height={20} />,
+    link: "https://www.github.com",
   },
   {
-    title: 'Linkedin',
-    icon: <Linkedin />,
-    href: 'https://www.youtube.com',
+    title: "Linkedin",
+    icon: <Linkedin width={20} height={20} />,
+    link: "https://www.github.com",
   },
   {
-    title: 'Facebook',
-    icon: <Facebook />,
-    href: 'https://www.youtube.com',
+    title: "Facebook",
+    icon: <Facebook width={20} height={20} />,
+    link: "https://www.github.com",
   },
   {
-    title: 'Slack',
-    icon: <Slack />,
-    href: 'https://www.youtube.com',
+    title: "instagram",
+    icon: <Instagram width={20} height={20} />,
+    link: "https://www.github.com",
   },
 ];
 
 const SocialLinks = () => {
   return (
-    <TooltipProvider>
-      <div className='flex items-center gap-3'>
-        {socialData?.map((item) => (
-          <Tooltip key={item?.title}>
-            <TooltipTrigger>
-              <div
-                key={item?.title}
-                className='text-lightSky/80 border border-lightSky/30 p-2.5 rounded-full hover:bg-lightSky/10 hover:border-lightSky hoverEffect'
-              >
-                <Link href={item?.href} target='_blank'>
-                  <span>{item?.icon}</span>
-                </Link>
-              </div>
-            </TooltipTrigger>
-            <TooltipContent className='bg-hoverColor text-black font-semibold'>
-              {item?.title}
-            </TooltipContent>
-          </Tooltip>
-        ))}
-      </div>
-    </TooltipProvider>
+    <div className="flex items-center gap-3">
+      {socialData?.map((item) => (
+        <div
+          key={item?.title}
+          className="text-lightSky/80 border border-lightSky/30 p-2.5 rounded-full hover:bg-lightSky/10 hover:border-lightSky hover:text-lightSky hoverEffect"
+        >
+          <Link href={"https://www.github.com"} target="blank">
+            <span className="">{item?.icon}</span>
+          </Link>
+        </div>
+      ))}
+    </div>
   );
 };
 
