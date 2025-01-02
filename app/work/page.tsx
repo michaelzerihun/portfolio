@@ -22,44 +22,55 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import Container from '@/components/Container';
-import projectOne from '@/images/projectOne.png';
-import projectTwo from '@/images/projectTwo.png';
-import projectThree from '@/images/projectThree.png';
+import projectOne from '@/images/canvaza.png';
+import projectTwo from '@/images/ethiochicken.png';
+import projectThree from '@/images/hodnos.png';
+import projectFour from '@/images/keyugasha.png';
 
 // Dummy data for projects
 const projects = [
   {
     id: '01',
-    title: 'E-commerce Platform',
-    category: 'Full Stack',
+    title: 'Canvaza',
+    category: 'Frontend',
     description:
-      'A modern e-commerce platform built with Next.js, featuring a responsive design, user authentication, and integration with a headless CMS for easy content management.',
-    stack: ['Next.js', 'Tailwind CSS', 'Strapi', 'PostgreSQL'],
+      'a video sharing and communication platform designed to enhance workplace collaboration and communication.',
+    stack: ['Next.js', 'Tailwind CSS', 'Firebase', 'Recharts'],
     image: projectOne,
-    liveUrl: 'https://example-ecommerce.com',
-    githubUrl: 'https://github.com/example/ecommerce',
+    liveUrl: 'https://www.canvaza.com/',
+    githubUrl: '',
   },
   {
     id: '02',
-    title: 'Task Management App',
+    title: 'Ethiochicken',
     category: 'Frontend',
     description:
-      'A sleek task management application that helps users organize their daily activities, set priorities, and track progress. Built with React and Redux for state management.',
-    stack: ['React', 'Redux', 'Styled Components', 'Firebase'],
+      'a modern enterprise solution managing poultry farming operations across Ethiopia. Built with Next.js and microservices, it handles farm tracking, order processing, and sales analytics through an intuitive dashboard that serves multiple user roles from farm managers to sales agents.',
+    stack: ['Next.js', 'Redux', 'Mantine UI', 'Firebase', 'Nestjs'],
     image: projectTwo,
     liveUrl: 'https://example-taskmanager.com',
-    githubUrl: 'https://github.com/example/taskmanager',
+    githubUrl: '',
   },
   {
     id: '03',
+    title: 'Hodnos',
+    category: 'Frontend',
+    description: 'Simple and secure artist booking platform.',
+    stack: ['Angular js'],
+    image: projectThree,
+    liveUrl: 'https://www.hodnos.com/',
+    githubUrl: '',
+  },
+  {
+    id: '04',
     title: 'Weather Forecast Dashboard',
     category: 'Frontend',
     description:
-      'An interactive weather forecast dashboard that provides real-time weather information and 5-day forecasts for multiple locations. Utilizes a third-party weather API.',
-    stack: ['Vue.js', 'Vuex', 'Chart.js', 'OpenWeatherMap API'],
-    image: projectThree,
+      'The Insurance Management Platform aims to simplify the process of applying for, managing, and paying for auto insurance on a pay-as-you-go basis. This platform is designed to facilitate seamless interactions between policyholders, agents, and insurers, ensuring a streamlined user experience.',
+    stack: ['Next.js', 'Shadcn', 'Postgres', 'Nestjs'],
+    image: projectFour,
     liveUrl: 'https://example-weatherapp.com',
-    githubUrl: 'https://github.com/example/weatherapp',
+    githubUrl: '',
   },
 ];
 

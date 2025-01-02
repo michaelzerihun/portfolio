@@ -18,41 +18,51 @@ const tabContent = {
     title: 'Professional Experience',
     items: [
       {
-        role: 'Senior Frontend Developer',
-        company: 'Tech Solutions Inc.',
-        period: '2021 - Present',
+        role: 'Frontend Developer',
+        company: 'Kinetic Business Intelligence Inc.',
+        period: '2022 - Present',
         description:
           'Led the development of multiple React-based web applications, improving performance by 40%. Mentored junior developers and implemented best practices for code quality.',
-        highlights: ['React', 'Next.js', 'TypeScript', 'Team Leadership'],
+        highlights: [
+          'React',
+          'Next.js',
+          'TypeScript',
+          'Firebase',
+          'Figma',
+          'Git',
+          'Framer Motion',
+          'Figma',
+        ],
       },
-      {
-        role: 'Full Stack Developer',
-        company: 'Digital Innovations Ltd',
-        period: '2018 - 2021',
-        description:
-          'Developed and maintained full-stack applications using modern JavaScript frameworks. Collaborated with cross-functional teams to deliver high-quality solutions.',
-        highlights: ['Node.js', 'React', 'MongoDB', 'AWS'],
-      },
+      // {
+      //   role: 'Full Stack Developer',
+      //   company: 'Digital Innovations Ltd',
+      //   period: '2018 - 2021',
+      //   description:
+      //     'Developed and maintained full-stack applications using modern JavaScript frameworks. Collaborated with cross-functional teams to deliver high-quality solutions.',
+      //   highlights: ['Node.js', 'React', 'MongoDB', 'AWS'],
+      // },
     ],
   },
   education: {
     title: 'Educational Background',
     items: [
-      {
-        degree: 'Master of Computer Science',
-        institution: 'Tech University',
-        period: '2016 - 2018',
-        description:
-          'Specialized in Software Engineering and Artificial Intelligence. Graduated with honors.',
-        achievements: ['4.0 GPA', 'Research Publication', "Dean's List"],
-      },
+      // {
+      //   degree: 'Master of Computer Science',
+      //   institution: 'Tech University',
+      //   period: '2016 - 2018',
+      //   description:
+      //     'Specialized in Software Engineering and Artificial Intelligence. Graduated with honors.',
+      //   achievements: ['4.0 GPA', 'Research Publication', "Dean's List"],
+      // },
       {
         degree: 'Bachelor of Computer Science',
-        institution: 'State University',
-        period: '2012 - 2016',
+        institution: 'HiLCoE School of Computer Science and Technology',
+        // period: '2012 - 2016',
         description:
-          'Foundation in computer science principles, data structures, and algorithms.',
-        achievements: ['Academic Excellence Award', 'Programming Club Lead'],
+          'Completed rigorous coursework in algorithms, data structures, and software engineering principles. Actively participated in competitive programming challenges and hackathons while maintaining academic excellence. Led the Programming Club, organizing workshops and mentoring fellow students in modern development practices.',
+
+        achievements: ['Programming Club Lead'],
       },
     ],
   },
@@ -62,7 +72,7 @@ const tabContent = {
       {
         name: 'Frontend Development',
         description:
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, distinctio. Quas fugiat nesciunt ipsum. Voluptatem inventore iste labore, similique quod laudantium rerum dolor, impedit voluptas distinctio praesentium quibusdam veniam tempore. Laudantium repellendus possimus adipisci maxime.',
+          'I collaborated with developers to create web applications using React, Next.js, and TypeScript. I also utilized Tailwind CSS and Framer Motion for a smooth user experience. I integrated Firebase for authentication and storage, ensuring a secure and efficient application. ',
         skills: [
           'React',
           'Next.js',
@@ -71,30 +81,30 @@ const tabContent = {
           'Framer Motion',
         ],
       },
-      {
-        name: 'Backend Development',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, distinctio. Quas fugiat nesciunt ipsum. Voluptatem inventore iste labore, similique quod laudantium rerum dolor, impedit voluptas distinctio praesentium quibusdam veniam tempore. Laudantium repellendus possimus adipisci maxime.',
-        skills: ['Node.js', 'Express', 'Python', 'PostgreSQL', 'MongoDB'],
-      },
-      {
-        name: 'Tools & Others',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, distinctio. Quas fugiat nesciunt ipsum. Voluptatem inventore iste labore, similique quod laudantium rerum dolor, impedit voluptas distinctio praesentium quibusdam veniam tempore. Laudantium repellendus possimus adipisci maxime.',
-        skills: ['Git', 'Docker', 'AWS', 'CI/CD', 'Agile Methodologies'],
-      },
+      // {
+      //   name: 'Backend Development',
+      //   description:
+      //     'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, distinctio. Quas fugiat nesciunt ipsum. Voluptatem inventore iste labore, similique quod laudantium rerum dolor, impedit voluptas distinctio praesentium quibusdam veniam tempore. Laudantium repellendus possimus adipisci maxime.',
+      //   skills: ['Node.js', 'Express', 'Python', 'PostgreSQL', 'MongoDB'],
+      // },
+      // {
+      //   name: 'Tools & Others',
+      //   description:
+      //     'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, distinctio. Quas fugiat nesciunt ipsum. Voluptatem inventore iste labore, similique quod laudantium rerum dolor, impedit voluptas distinctio praesentium quibusdam veniam tempore. Laudantium repellendus possimus adipisci maxime.',
+      //   skills: ['Git', 'Docker', 'AWS', 'CI/CD', 'Agile Methodologies'],
+      // },
     ],
   },
   about: {
     title: 'About Me',
-    bio: 'Passionate software developer with over 5 years of experience in building modern web applications. Committed to writing clean, maintainable code and staying current with emerging technologies. Strong advocate for user-centric design and accessibility.',
+    bio: 'Passionate software developer with over 2 years of experience in building modern web applications. Committed to writing clean, maintainable code and staying current with emerging technologies. Strong advocate for user-centric design and accessibility.',
     interests: [
       'Open Source Contributing',
       'Tech Blogging',
       'UI/UX Design',
       'Machine Learning',
     ],
-    languages: ['English (Native)', 'Spanish (Intermediate)', 'German (Basic)'],
+    languages: ['English (Fluent)', 'Amharic (Native)'],
   },
 };
 
@@ -123,7 +133,7 @@ export default function ResumePage() {
                 >
                   <div className='flex items-center gap-1.5 md:w-[50%] md:gap-3'>
                     <item.icon className='w-4 h-4 md:h-5 md:w-5' />
-                    {item.title}
+                    <span className='hidden md:flex'>{item.title}</span>
                   </div>
                 </TabsTrigger>
               ))}
@@ -153,12 +163,14 @@ export default function ResumePage() {
                             {item.company}
                           </p>
                         </div>
-                        <div className='flex items-center text-muted-foreground'>
+                        {/* <div className='flex items-center text-muted-foreground'>
                           <Calendar className='h-4 w-4 mr-2' />
                           {item.period}
-                        </div>
+                        </div> */}
                       </div>
-                      <p className='mb-4'>{item.description}</p>
+                      <p className='mb-4 text-sm md:text-base'>
+                        {item.description}
+                      </p>
                       <div className='flex flex-wrap gap-2'>
                         {item.highlights.map((highlight, i) => (
                           <Badge key={i} variant='secondary'>
@@ -196,12 +208,14 @@ export default function ResumePage() {
                             {item.institution}
                           </p>
                         </div>
-                        <div className='flex items-center text-muted-foreground'>
+                        {/* <div className='flex items-center text-muted-foreground'>
                           <Calendar className='h-4 w-4 mr-2' />
                           {item.period}
-                        </div>
+                        </div> */}
                       </div>
-                      <p className='mb-4'>{item.description}</p>
+                      <p className='mb-4 text-sm md:text-base'>
+                        {item.description}
+                      </p>
                       <div className='flex flex-wrap gap-2'>
                         {item.achievements.map((achievement, i) => (
                           <Badge key={i} variant='secondary'>
@@ -260,7 +274,9 @@ export default function ResumePage() {
                   animate={{ opacity: 1, y: 0 }}
                   className='border rounded-lg border-lightSky/20 p-6'
                 >
-                  <p className='mb-6 text-lg'>{tabContent.about.bio}</p>
+                  <p className='mb-6 text-sm md:text-base'>
+                    {tabContent.about.bio}
+                  </p>
                   <div className='space-y-4'>
                     <div>
                       <h3 className='text-lg font-semibold mb-2'>Interests</h3>

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@iconify/react": "^5.1.0",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-scroll-area": "^1.2.1",
     "@radix-ui/react-select": "^2.1.2",
@@ -27,6 +28,7 @@
     "react": "^19.0.0",
     "react-countup": "^6.5.3",
     "react-dom": "^19.0.0",
+    "react-player": "^2.16.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7"
   },

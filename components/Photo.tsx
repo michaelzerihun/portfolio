@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import hero from '@/images/hero.png';
+import hero from '@/images/hero.jpg';
 
 const EnhancedPhoto = () => {
   const circleColors = ['#66fcf1'];
