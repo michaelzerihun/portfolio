@@ -1,13 +1,13 @@
-"use client";
-import React, { useEffect, useState } from "react";
+'use client';
+import React, { useEffect, useState } from 'react';
 
 const TextSlider = () => {
   const animHeight = 30; // Height of the sliding animation
   const [currentIndex, setCurrentIndex] = useState(0);
   const textItems = [
-    "Software Engineer",
-    "Full stack Developer",
-    "UI/UX Designer",
+    'Software Engineer',
+    'Full stack Developer',
+    'UI/UX Designer',
   ];
 
   useEffect(() => {
@@ -16,12 +16,12 @@ const TextSlider = () => {
     }, 2000); // Interval for each slide (2 seconds)
 
     return () => clearInterval(interval); // Cleanup interval on unmount
-  }, []);
+  }, [textItems.length]);
 
   return (
-    <div className="relative overflow-hidden h-[30px] w-full flex items-center">
+    <div className='relative overflow-hidden h-[30px] w-full flex items-center'>
       <div
-        className="absolute transition-transform duration-500 ease-in-out"
+        className='absolute transition-transform duration-500 ease-in-out'
         style={{
           transform: `translateY(-${currentIndex * animHeight}px)`,
         }}
@@ -29,7 +29,7 @@ const TextSlider = () => {
         {textItems.map((item, index) => (
           <p
             key={index}
-            className="font-semibold text-white/70 tracking-wider mb-1 whitespace-nowrap"
+            className='font-semibold text-white/70 tracking-wider mb-1 whitespace-nowrap'
           >
             {item}
           </p>

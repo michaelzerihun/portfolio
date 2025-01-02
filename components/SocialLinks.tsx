@@ -1,12 +1,13 @@
 import { Facebook, Github, Instagram, Linkedin, Youtube } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
+import { Icon } from '@iconify/react/dist/iconify.js';
 
 const socialData = [
   {
-    title: 'Youtube',
-    icon: <Youtube width={20} height={20} />,
-    link: '',
+    title: 'Telegram',
+    icon: <Icon icon='mingcute:telegram-line' width={20} height={20} />,
+    link: 'https://t.me/mxchaelz',
   },
   {
     title: 'Github',
