@@ -7,8 +7,8 @@ export const NavbarData = [
 ];
 
 export const statsData = [
-  { num: 12, text: 'Years of experience' },
-  { num: 25, text: 'Projects completed' },
+  { num: 2, text: 'Years of experience' },
+  { num: 5, text: 'Projects completed' },
   { num: 8, text: 'Technologies mastered' },
   { num: 500, text: 'Code commits' },
 ];
@@ -16,30 +16,30 @@ export const statsData = [
 export const servicesData = [
   {
     _id: '01',
-    title: 'Web Development',
+    title: 'Front End Web Development',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, sequi distinctio minus esse consequatur fugit accusamus velit iste quisquam aut.',
-    href: 'https://www.youtube.com/@reactjsBD',
+      'I develop responsive and user-friendly websites using modern technologies like React, Next.js, and Tailwind CSS. I ensure your website is fast, secure, and optimized for search engines.',
+    href: 'https://t.me/mxchaelz',
   },
   {
     _id: '02',
-    title: 'App Development',
+    title: 'Mobile App Development',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, sequi distinctio minus esse consequatur fugit accusamus velit iste quisquam aut.',
-    href: 'https://www.youtube.com/@reactjsBD',
+      'Developed apps for both Android and iOS platforms using React Native. I focus on creating intuitive and visually appealing interfaces that provide a seamless user experience.',
+    href: 'https://t.me/mxchaelz',
   },
   {
     _id: '03',
-    title: 'UI/UX Design',
+    title: 'Code Cleaning and Maintainance',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, sequi distinctio minus esse consequatur fugit accusamus velit iste quisquam aut.',
-    href: 'https://www.youtube.com/@reactjsBD',
+      'I maintain and debug already existing codebases, ensuring they are well-documented and easy to maintain. This includes fixing bugs, optimizing performance, and adding new features.',
+    href: 'https://t.me/mxchaelz',
   },
   {
     _id: '04',
-    title: 'Logo Design',
+    title: 'UX/UI Design',
     description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, sequi distinctio minus esse consequatur fugit accusamus velit iste quisquam aut.',
-    href: 'https://www.youtube.com/@reactjsBD',
+      'I create modern, intuitive, and aesthetically pleasing user interfaces with a focus on user experience. Using industry-standard design tools and principles, I deliver pixel-perfect designs that balance beauty with functionality while ensuring accessibility and user engagement.',
+    href: 'https://t.me/mxchaelz',
   },
 ];
