@@ -48,7 +48,7 @@ const projects = [
       'a modern enterprise solution managing poultry farming operations across Ethiopia. Built with Next.js and microservices, it handles farm tracking, order processing, and sales analytics through an intuitive dashboard that serves multiple user roles from farm managers to sales agents.',
     stack: ['Next.js', 'Redux', 'Mantine UI', 'Firebase', 'Nestjs'],
     image: projectTwo,
-    liveUrl: 'https://example-taskmanager.com',
+    liveUrl: '',
     githubUrl: '',
   },
   {
@@ -69,7 +69,7 @@ const projects = [
       'The Insurance Management Platform aims to simplify the process of applying for, managing, and paying for auto insurance on a pay-as-you-go basis. This platform is designed to facilitate seamless interactions between policyholders, agents, and insurers, ensuring a streamlined user experience.',
     stack: ['Next.js', 'Shadcn', 'Postgres', 'Nestjs'],
     image: projectFour,
-    liveUrl: 'https://example-weatherapp.com',
+    liveUrl: '',
     githubUrl: '',
   },
 ];
