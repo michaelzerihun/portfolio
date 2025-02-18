@@ -34,6 +34,22 @@ const tabContent = {
           'Figma',
         ],
       },
+      {
+        role: 'Frontend Developer',
+        company: 'Eagle Lion Systems Technologies Inc.',
+        period: '2024 - Present',
+        description:
+          'Led the development of multiple Nextjs-based web applications, making robust and scalable applications implement state of the art state management and fetching logic using Tanstack React Query. ',
+        highlights: [
+          'React',
+          'Next.js',
+          'TypeScript',
+          'Firebase',
+          'Tailwind css',
+          'Git',
+          'Figma',
+        ],
+      },
       // {
       //   role: 'Full Stack Developer',
       //   company: 'Digital Innovations Ltd',
@@ -97,7 +113,7 @@ const tabContent = {
   },
   about: {
     title: 'About Me',
-    bio: 'Passionate software developer with over 2 years of experience in building modern web applications. Committed to writing clean, maintainable code and staying current with emerging technologies. Strong advocate for user-centric design and accessibility.',
+    bio: 'Passionate software developer with almost 2 years of experience in building modern web applications. Committed to writing clean, maintainable code and staying current with emerging technologies. Strong advocate for user-centric design and accessibility.',
     interests: [
       'Open Source Contributing',
       'Tech Blogging',

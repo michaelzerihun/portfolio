@@ -1,76 +1,88 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { ArrowUpRight, Github, ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import * as React from "react";
+import Link from "next/link";
+import { ArrowUpRight, Github, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@/components/ui/tooltip';
-import { Separator } from '@/components/ui/separator';
+} from "@/components/ui/tooltip";
+import { Separator } from "@/components/ui/separator";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '@/components/ui/carousel';
-import Container from '@/components/Container';
-import projectOne from '@/images/canvaza.png';
-import projectTwo from '@/images/ethiochicken.png';
-import projectThree from '@/images/hodnos.png';
-import projectFour from '@/images/keyugasha.png';
+} from "@/components/ui/carousel";
+import Container from "@/components/Container";
+import projectZero from "@/images/zemendashboard.png";
+import projectOne from "@/images/canvaza.png";
+import projectTwo from "@/images/ethiochicken.png";
+import projectThree from "@/images/hodnos.png";
+import projectFour from "@/images/keyugasha.png";
+import ProjectImageViewer from "@/components/ImageViewer";
 
 // Dummy data for projects
 const projects = [
   {
-    id: '01',
-    title: 'Canvaza',
-    category: 'Frontend',
+    id: "01",
+    title: "ZemenShop Dashboard | Web Frontend",
+    category: "Frontend",
     description:
-      'a video sharing and communication platform designed to enhance workplace collaboration and communication.',
-    stack: ['Next.js', 'Tailwind CSS', 'Firebase', 'Recharts'],
+      "a modern e-commerce dashboard for Zemen Shop, featuring a user-friendly interface that allows shop owners to manage their products, orders, and customers with ease. The dashboard also provides detailed analytics and insights to help shop owners make informed decisions.",
+    stack: ["Next.js", "Tailwind CSS", "Firebase", "Recharts"],
+    image: projectZero,
+    liveUrl: "https://www.canvaza.com/",
+    githubUrl: "",
+  },
+  {
+    id: "02",
+    title: "Canvaza | Web Frontend",
+    category: "Frontend",
+    description:
+      "a video sharing and communication platform designed to enhance workplace collaboration and communication.",
+    stack: ["Next.js", "Tailwind CSS", "Firebase", "Recharts"],
     image: projectOne,
-    liveUrl: 'https://www.canvaza.com/',
-    githubUrl: '',
+    liveUrl: "https://www.canvaza.com/",
+    githubUrl: "",
   },
   {
-    id: '02',
-    title: 'Ethiochicken',
-    category: 'Frontend',
+    id: "03",
+    title: "Ethiochicken | Web Frontend",
+    category: "Frontend",
     description:
-      'a modern enterprise solution managing poultry farming operations across Ethiopia. Built with Next.js and microservices, it handles farm tracking, order processing, and sales analytics through an intuitive dashboard that serves multiple user roles from farm managers to sales agents.',
-    stack: ['Next.js', 'Redux', 'Mantine UI', 'Firebase', 'Nestjs'],
+      "a modern enterprise solution managing poultry farming operations across Ethiopia. Built with Next.js and microservices, it handles farm tracking, order processing, and sales analytics through an intuitive dashboard that serves multiple user roles from farm managers to sales agents.",
+    stack: ["Next.js", "Redux", "Mantine UI", "Firebase", "Nestjs"],
     image: projectTwo,
-    liveUrl: '',
-    githubUrl: '',
+    liveUrl: "",
+    githubUrl: "",
   },
   {
-    id: '03',
-    title: 'Hodnos',
-    category: 'Frontend',
-    description: 'Simple and secure artist booking platform.',
-    stack: ['Angular js'],
+    id: "04",
+    title: "Hodnos | Web Frontend",
+    category: "Frontend",
+    description: "Simple and secure artist booking platform.",
+    stack: ["Angular js"],
     image: projectThree,
-    liveUrl: 'https://www.hodnos.com/',
-    githubUrl: '',
+    liveUrl: "https://www.hodnos.com/",
+    githubUrl: "",
   },
   {
-    id: '04',
-    title: 'Weather Forecast Dashboard',
-    category: 'Frontend',
+    id: "05",
+    title: "KGI | Web Frontend",
+    category: "Frontend",
     description:
-      'The Insurance Management Platform aims to simplify the process of applying for, managing, and paying for auto insurance on a pay-as-you-go basis. This platform is designed to facilitate seamless interactions between policyholders, agents, and insurers, ensuring a streamlined user experience.',
-    stack: ['Next.js', 'Shadcn', 'Postgres', 'Nestjs'],
+      "The Insurance Management Platform aims to simplify the process of applying for, managing, and paying for auto insurance on a pay-as-you-go basis. This platform is designed to facilitate seamless interactions between policyholders, agents, and insurers, ensuring a streamlined user experience.",
+    stack: ["Next.js", "Shadcn", "Postgres", "Nestjs"],
     image: projectFour,
-    liveUrl: '',
-    githubUrl: '',
+    liveUrl: "",
+    githubUrl: "",
   },
 ];
 
@@ -86,20 +98,20 @@ export default function ProjectSlider() {
       initial={{ opacity: 0 }}
       animate={{
         opacity: 1,
-        transition: { delay: 2.4, duration: 0.4, ease: 'easeIn' },
+        transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
       }}
-      className='py-6 md:py-12'
+      className="py-6 md:py-12"
     >
       <Container>
         <Carousel
           opts={{
-            align: 'start',
+            align: "start",
             loop: true,
           }}
-          className='w-full'
+          className="w-full"
           onSelect={() => {
             const index = 0;
-            if (typeof index === 'number') {
+            if (typeof index === "number") {
               handleSlideChange(index);
             }
           }}
@@ -107,44 +119,44 @@ export default function ProjectSlider() {
           <CarouselContent>
             {projects.map((project) => (
               <CarouselItem key={project.id}>
-                <Card className='bg-bodyColor border-lightSky/20'>
-                  <CardContent className='p-6'>
-                    <div className='flex flex-col md:flex-row md:items-center md:space-x-8'>
-                      <div className='w-full md:w-1/2 order-2 md:order-1 mb-8 md:mb-0'>
-                        <div className='space-y-3 md:space-y-6 mt-4 md:mt-0'>
-                          <h2 className='text-4xl md:text-8xl leading-none font-extrabold text-transparent text-outline'>
+                <Card className="bg-bodyColor border-lightSky/20">
+                  <CardContent className="p-6">
+                    <div className="flex flex-col md:flex-row md:items-center md:space-x-8">
+                      <div className="w-full md:w-1/2 order-2 md:order-1 mb-8 md:mb-0">
+                        <div className="space-y-3 md:space-y-6 mt-4 md:mt-0">
+                          <h2 className="text-4xl md:text-8xl leading-none font-extrabold text-transparent text-outline">
                             {project?.id}
                           </h2>
-                          <h3 className='text-xl md:text-3xl font-bold leading-none text-white group-hover:text-lightSky hoverEffect'>
-                            {project?.category} project
+                          <h3 className="text-xl md:text-3xl font-bold leading-none text-white group-hover:text-lightSky hoverEffect">
+                            {project?.title}
                           </h3>
-                          <p className='text-white/60 text-sm md:text-base leading-6 md:leading-normal'>
+                          <p className="text-white/60 text-sm md:text-base leading-6 md:leading-normal">
                             {project?.description}
                           </p>
-                          <ul className='flex flex-wrap md:flex-nowrap gap-2 md:gap-4 items-center'>
+                          <ul className="flex flex-wrap md:flex-nowrap gap-2 md:gap-4 items-center">
                             {project?.stack?.map((item, index) => (
                               <li
                                 key={index}
-                                className='text-xs md:text-base text-lightSky'
+                                className="text-xs md:text-base text-lightSky"
                               >
                                 {item}
-                                {index !== project?.stack?.length - 1 && ','}
+                                {index !== project?.stack?.length - 1 && ","}
                               </li>
                             ))}
                           </ul>
-                          <Separator className='bg-gray-700' />
-                          <div className='flex items-center space-x-4'>
+                          <Separator className="bg-gray-700" />
+                          <div className="flex items-center space-x-4">
                             <TooltipProvider>
                               <Tooltip>
                                 <TooltipTrigger asChild>
                                   <Link href={project.liveUrl}>
                                     <Button
-                                      variant='outline'
-                                      size='icon'
-                                      className='bg-lightSky/5 text-white/80 border-lightSky/20 hover:bg-lightSky/10 hover:border-lightSky hover:text-hoverColor hoverEffect'
+                                      variant="outline"
+                                      size="icon"
+                                      className="bg-lightSky/5 text-white/80 border-lightSky/20 hover:bg-lightSky/10 hover:border-lightSky hover:text-hoverColor hoverEffect"
                                     >
-                                      <ArrowUpRight className='h-4 w-4' />
-                                      <span className='sr-only'>
+                                      <ArrowUpRight className="h-4 w-4" />
+                                      <span className="sr-only">
                                         View Live Project
                                       </span>
                                     </Button>
@@ -160,12 +172,12 @@ export default function ProjectSlider() {
                                 <TooltipTrigger asChild>
                                   <Link href={project.githubUrl}>
                                     <Button
-                                      variant='outline'
-                                      size='icon'
-                                      className='bg-lightSky/5 text-white/80 border-lightSky/20 hover:bg-lightSky/10 hover:border-lightSky hover:text-hoverColor hoverEffect'
+                                      variant="outline"
+                                      size="icon"
+                                      className="bg-lightSky/5 text-white/80 border-lightSky/20 hover:bg-lightSky/10 hover:border-lightSky hover:text-hoverColor hoverEffect"
                                     >
-                                      <Github className='h-4 w-4' />
-                                      <span className='sr-only'>
+                                      <Github className="h-4 w-4" />
+                                      <span className="sr-only">
                                         View GitHub Repository
                                       </span>
                                     </Button>
@@ -179,15 +191,11 @@ export default function ProjectSlider() {
                           </div>
                         </div>
                       </div>
-                      <div className='w-full md:w-1/2 order-1 md:order-2'>
-                        <div className='relative h-64 md:h-96 bg-gray-700 rounded-lg overflow-hidden'>
-                          <Image
-                            src={project.image}
-                            alt={project.title}
-                            fill
-                            className='object-cover'
-                          />
-                        </div>
+                      <div className="w-full md:w-1/2 order-1 md:order-2">
+                        <ProjectImageViewer
+                          src={project.image}
+                          alt={project.title}
+                        />
                       </div>
                     </div>
                   </CardContent>
@@ -195,29 +203,29 @@ export default function ProjectSlider() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className='absolute right-10 -bottom-8 bg-red-600'>
-            <CarouselPrevious className='hidden md:flex rounded-md bg-transparent border border-lightSky/20 hover:bg-hoverColor/20 hover:text-white hover:border-hoverColor p-5 hoverEffect' />
-            <CarouselNext className='hidden md:flex rounded-md bg-transparent border border-lightSky/20 hover:bg-hoverColor/20 hover:text-white hover:border-hoverColor p-5 hoverEffect' />
+          <div className="absolute right-10 -bottom-8 bg-red-600">
+            <CarouselPrevious className="hidden md:flex rounded-md bg-transparent border border-lightSky/20 hover:bg-hoverColor/20 hover:text-white hover:border-hoverColor p-5 hoverEffect" />
+            <CarouselNext className="hidden md:flex rounded-md bg-transparent border border-lightSky/20 hover:bg-hoverColor/20 hover:text-white hover:border-hoverColor p-5 hoverEffect" />
           </div>
         </Carousel>
-        <div className='flex justify-center mt-4 md:hidden'>
+        <div className="flex justify-center mt-4 md:hidden">
           <Button
-            variant='outline'
-            size='icon'
-            className='mr-2 rounded-md bg-transparent border border-lightSky/20 hover:bg-hoverColor/20 hover:text-white hover:border-hoverColor p-5 hoverEffect'
+            variant="outline"
+            size="icon"
+            className="mr-2 rounded-md bg-transparent border border-lightSky/20 hover:bg-hoverColor/20 hover:text-white hover:border-hoverColor p-5 hoverEffect"
             onClick={() => handleSlideChange(currentIndex - 1)}
           >
-            <ChevronLeft className='h-4 w-4' />
-            <span className='sr-only'>Previous slide</span>
+            <ChevronLeft className="h-4 w-4" />
+            <span className="sr-only">Previous slide</span>
           </Button>
           <Button
-            variant='outline'
-            size='icon'
-            className='mr-2 rounded-md bg-transparent border border-lightSky/20 hover:bg-hoverColor/20 hover:text-white hover:border-hoverColor p-5 hoverEffect'
+            variant="outline"
+            size="icon"
+            className="mr-2 rounded-md bg-transparent border border-lightSky/20 hover:bg-hoverColor/20 hover:text-white hover:border-hoverColor p-5 hoverEffect"
             onClick={() => handleSlideChange(currentIndex + 1)}
           >
-            <ChevronRight className='h-4 w-4' />
-            <span className='sr-only'>Next slide</span>
+            <ChevronRight className="h-4 w-4" />
+            <span className="sr-only">Next slide</span>
           </Button>
         </div>
       </Container>
