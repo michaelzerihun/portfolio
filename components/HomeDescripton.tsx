@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 const HomeDescripton = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
   const description =
-    'EEnthusiastic and detail-oriented software developer with a focus on web development. Experienced in crafting responsive UI and implementing web solutions using technologies such as React, Next.js, and Firebase.';
+    'FFull-Stack Developer (3+ yrs) crafting high-performance web solutions. Expertise in React, Next.js, TypeScript, Node.js, NestJS, PostgreSQL, MongoDB. I build scalable, impactful digital products. Explore my portfolio!';
   const { displayedText, isComplete } = useTypewriter(description, 30);
 
   useEffect(() => {
