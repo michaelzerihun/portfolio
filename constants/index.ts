@@ -65,9 +65,9 @@ export const servicesData = [
   },
   {
     _id: "08",
-    title: "Performance Optimization",
+    title: "WordPress Development",
     description:
-      "Identifying and resolving bottlenecks to significantly improve application loading times, responsiveness, and overall efficiency across the stack.",
+      "Experienced in building, customizing, and maintaining versatile websites using the WordPress content management system for diverse client needs.",
     href: "https://t.me/mxchaelz",
   },
   {
